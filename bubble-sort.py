@@ -1,13 +1,10 @@
 def bubble_sort(arr):
     i = len(arr)
     while i > 0:
-        print(arr)
         no_swaps = True
         for j in range(0, i - 1):
             if arr[j] > arr[j+1]:
-                temp = arr[j]
-                arr[j] = arr[j + 1]
-                arr[j + 1] = temp
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
                 no_swaps = False
         i -= 1
         if (no_swaps):

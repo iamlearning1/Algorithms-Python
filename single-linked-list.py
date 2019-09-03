@@ -77,6 +77,26 @@ class SingleLinkedList:
 
         return self
 
+    def get_value(self, index):
+        if index < 0 or index >= self.length:
+            return False
+
+        current = self.head
+        counter = 0
+        while counter < index:
+            current = current.next
+            counter += 1
+
+        return current
+
+    def set_value(self, index, val):
+        node = self.get_value(index)
+        if not node:
+            return False
+
+        node.val = val
+        return True
+
 
 linked_list = SingleLinkedList()
 linked_list.append('Hello')
@@ -84,5 +104,7 @@ linked_list.append('World')
 linked_list.append('!')
 # linked_list.pop()
 # linked_list.shift()
-linked_list.unshift('Hey')
+# linked_list.unshift('Hey')
+# print(linked_list.get(5))
+linked_list.set_value(1, 'How are you')
 print(linked_list)

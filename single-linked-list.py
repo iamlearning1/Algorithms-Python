@@ -131,6 +131,22 @@ class SingleLinkedList:
         self.length -= 1
         return value_to_be_removed
 
+    def reverse(self):
+        node = self.head
+
+        self.head, self.tail = self.tail, self.head
+
+        next = None
+        prev = None
+        counter = 0
+        while counter < self.length:
+            next = node.next
+            node.next = prev
+            prev = node
+            node = next
+            counter += 1
+        return self
+
 
 linked_list = SingleLinkedList()
 linked_list.append('Hello')
@@ -144,4 +160,4 @@ linked_list.append('!')
 # linked_list.set_value(-1, 'How are you')
 # linked_list.insert(3, 'Hi')
 # linked_list.remove(3)
-print(linked_list)
+print(linked_list.reverse())

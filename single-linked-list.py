@@ -52,10 +52,37 @@ class SingleLinkedList:
 
         return self
 
+    def shift(self):
+        if not self.head:
+            return None
+
+        current = self.head
+        self.head = self.head.next
+        self.length -= 1
+
+        if self.length is 0:
+            self.tail = None
+
+        return current
+
+    def unshift(self, val):
+        node = Node(val)
+        if not self.head:
+            self.head = node
+            self.tail = None
+        else:
+            node.next = self.head
+            self.head = node
+            self.length += 1
+
+        return self
+
 
 linked_list = SingleLinkedList()
 linked_list.append('Hello')
 linked_list.append('World')
 linked_list.append('!')
-linked_list.pop()
+# linked_list.pop()
+# linked_list.shift()
+linked_list.unshift('Hey')
 print(linked_list)

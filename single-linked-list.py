@@ -97,14 +97,51 @@ class SingleLinkedList:
         node.val = val
         return True
 
+    def insert(self, index, val):
+        if index < 0 or index >= self.length:
+            return False
+
+        if index is 0:
+            return not not self.unshift(val)
+
+        if index is self.length:
+            return not not self.append(val)
+
+        node = Node(val)
+        current = self.get_value(index - 1)
+        currents_next = current.next
+        node.next = currents_next
+        current.next = node
+        self.length += 1
+        return True
+
+    def remove(self, index):
+        if index < 0 or index >= self.length:
+            return False
+
+        if index is 0:
+            return not not self.shift()
+
+        if index is self.length:
+            return not not self.pop()
+
+        node = self.get_value(index - 1)
+        value_to_be_removed = node.next
+        node.next = value_to_be_removed.next
+        self.length -= 1
+        return value_to_be_removed
+
 
 linked_list = SingleLinkedList()
 linked_list.append('Hello')
 linked_list.append('World')
 linked_list.append('!')
+linked_list.append('!')
 # linked_list.pop()
 # linked_list.shift()
 # linked_list.unshift('Hey')
 # print(linked_list.get(5))
-linked_list.set_value(1, 'How are you')
+# linked_list.set_value(-1, 'How are you')
+# linked_list.insert(3, 'Hi')
+# linked_list.remove(3)
 print(linked_list)

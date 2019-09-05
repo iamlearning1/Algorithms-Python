@@ -150,17 +150,39 @@ class DoubleLinkedList:
         self.length += 1
         return True
 
+    def remove(self, index):
+        if index < 0 or index > self.length:
+            return False
+
+        if index is 0:
+            return self.shift()
+
+        if index is self.length - 1:
+            return self.pop()
+
+        node = self.get_value(index)
+
+        node.prev.next = node.next
+        node.next.prev = node.prev
+        node.next = None
+        node.prev = None
+
+        self.length -= 1
+        return node
+
 
 doubleLinkedList = DoubleLinkedList()
 
 doubleLinkedList.push(1)
 doubleLinkedList.push(2)
 doubleLinkedList.push(3)
+doubleLinkedList.push(4)
 # print(doubleLinkedList.pop())
 # print(doubleLinkedList.shift())
 # doubleLinkedList.unshift(0)
 # print(doubleLinkedList.get_value(-2))
 # doubleLinkedList.set_value(2, 100)
-doubleLinkedList.insert(1, 100)
+# doubleLinkedList.insert(1, 100)
+# print(doubleLinkedList.remove(2))
 
 print(doubleLinkedList)

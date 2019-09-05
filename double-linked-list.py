@@ -101,6 +101,33 @@ class DoubleLinkedList:
         self.length += 1
         return self
 
+    def get_value(self, index):
+        if (index < 0 or index >= self.length):
+            return None
+
+        if (index <= self.length / 2):
+            node = self.head
+            counter = 0
+            while(counter < index):
+                node = node.next
+                counter += 1
+        else:
+            node = self.tail
+            counter = self.length - 1
+            while(counter > index):
+                node = node.prev
+                counter -= 1
+
+        return node
+
+    def set_value(self, index, value):
+        node = self.get_value(index)
+        if not node:
+            return False
+
+        node.val = value
+        return True
+
 
 doubleLinkedList = DoubleLinkedList()
 
@@ -109,6 +136,8 @@ doubleLinkedList.push(2)
 doubleLinkedList.push(3)
 # print(doubleLinkedList.pop())
 # print(doubleLinkedList.shift())
-doubleLinkedList.unshift(0)
+# doubleLinkedList.unshift(0)
+# print(doubleLinkedList.get_value(-2))
+# doubleLinkedList.set_value(2, 100)
 
 print(doubleLinkedList)

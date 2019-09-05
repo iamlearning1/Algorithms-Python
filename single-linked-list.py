@@ -102,10 +102,10 @@ class SingleLinkedList:
             return False
 
         if index is 0:
-            return not not self.unshift(val)
+            return bool(self.unshift(val))
 
         if index is self.length:
-            return not not self.append(val)
+            return bool(self.append(val))
 
         node = Node(val)
         current = self.get_value(index - 1)
@@ -120,10 +120,10 @@ class SingleLinkedList:
             return False
 
         if index is 0:
-            return not not self.shift()
+            return bool(self.shift())
 
         if index is self.length:
-            return not not self.pop()
+            return bool(self.pop())
 
         node = self.get_value(index - 1)
         value_to_be_removed = node.next

@@ -128,6 +128,28 @@ class DoubleLinkedList:
         node.val = value
         return True
 
+    def insert(self, index, value):
+        if index < 0 or index > self.length:
+            return False
+
+        if index is 0:
+            return bool(self.unshift(value))
+
+        if index is self.length:
+            return bool(self.push(value))
+
+        node = Node(value)
+        current_node = self.get_value(index - 1)
+        next_node = current_node.next
+
+        node.prev = current_node
+        node.next = next_node
+        next_node.prev = node
+        current_node.next = node
+
+        self.length += 1
+        return True
+
 
 doubleLinkedList = DoubleLinkedList()
 
@@ -139,5 +161,6 @@ doubleLinkedList.push(3)
 # doubleLinkedList.unshift(0)
 # print(doubleLinkedList.get_value(-2))
 # doubleLinkedList.set_value(2, 100)
+doubleLinkedList.insert(1, 100)
 
 print(doubleLinkedList)

@@ -170,6 +170,23 @@ class DoubleLinkedList:
         self.length -= 1
         return node
 
+    def reverse(self):
+        if self.length is 0:
+            return None
+
+        node = self.head
+        new_head = None
+
+        while node:
+            temp = node.prev
+            node.prev = node.next
+            node.next = temp
+
+            new_head = node
+            node = node.prev
+
+        return new_head.next.next
+
 
 doubleLinkedList = DoubleLinkedList()
 
@@ -185,4 +202,4 @@ doubleLinkedList.push(4)
 # doubleLinkedList.insert(1, 100)
 # print(doubleLinkedList.remove(2))
 
-print(doubleLinkedList)
+print(doubleLinkedList.reverse())

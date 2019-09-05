@@ -87,6 +87,20 @@ class DoubleLinkedList:
         self.length -= 1
         return node
 
+    def unshift(self, value):
+        node = Node(value)
+
+        if (self.length is 0):
+            self.head = node
+            self.tail = node
+        else:
+            self.head.prev = node
+            node.next = self.head
+            self.head = node
+
+        self.length += 1
+        return self
+
 
 doubleLinkedList = DoubleLinkedList()
 
@@ -95,5 +109,6 @@ doubleLinkedList.push(2)
 doubleLinkedList.push(3)
 # print(doubleLinkedList.pop())
 # print(doubleLinkedList.shift())
+doubleLinkedList.unshift(0)
 
 print(doubleLinkedList)

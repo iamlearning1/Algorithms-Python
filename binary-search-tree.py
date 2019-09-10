@@ -42,6 +42,23 @@ class BST:
                     return self
                 current = current.right
 
+    def search(self, value):
+        if not self.root:
+            return False
+
+        current = self.root
+        found = False
+
+        while not found and current:
+            if value < current.value:
+                current = current.left
+            elif value > current.value:
+                current = current.right
+            else:
+                return True
+
+        return False
+
 
 bst = BST()
 
@@ -53,4 +70,4 @@ bst.insert(7)
 bst.insert(11)
 bst.insert(16)
 
-print(bst)
+print(bst.search(10))

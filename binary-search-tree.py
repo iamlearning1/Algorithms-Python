@@ -59,6 +59,24 @@ class BST:
 
         return False
 
+    def BFS(self):
+        queue = []
+        data = []
+        node = self.root
+
+        queue.append(node)
+        while len(queue) is not 0:
+            node = queue.pop(0)
+            data.append(node.value)
+
+            if node.left:
+                queue.append(node.left)
+
+            if node.right:
+                queue.append(node.right)
+
+        return data
+
 
 bst = BST()
 
@@ -70,4 +88,12 @@ bst.insert(7)
 bst.insert(11)
 bst.insert(16)
 
-print(bst.search(10))
+# print(bst.search(10))
+
+print(bst.BFS())
+
+'''
+                        10
+                  5           13
+              2       7   11      16
+'''

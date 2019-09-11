@@ -77,7 +77,7 @@ class BST:
 
         return data
 
-    def DFS_pre_order(self):
+    def DFS_Pre_Order(self):
         queue = []
 
         def traverse(node):
@@ -85,6 +85,36 @@ class BST:
 
             if node.left:
                 traverse(node.left)
+
+            if node.right:
+                traverse(node.right)
+
+        traverse(self.root)
+        return queue
+
+    def DFS_Post_Order(self):
+        queue = []
+
+        def traverse(node):
+            if node.left:
+                traverse(node.left)
+
+            if node.right:
+                traverse(node.right)
+
+            queue.append(node.value)
+
+        traverse(self.root)
+        return queue
+
+    def DFS_In_Order(self):
+        queue = []
+
+        def traverse(node):
+            if node.left:
+                traverse(node.left)
+
+            queue.append(node.value)
 
             if node.right:
                 traverse(node.right)
@@ -106,7 +136,9 @@ bst.insert(16)
 # print(bst.search(10))
 
 # print(bst.BFS())
-print(bst.DFS_pre_order())
+print(bst.DFS_Pre_Order())
+print(bst.DFS_Post_Order())
+print(bst.DFS_In_Order())
 
 '''
                         10
